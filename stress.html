@@ -1,0 +1,52 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+	<style type="text/css">
+		#timer
+		{
+			font-size: 300pt;
+            color: white;
+		}
+        
+        body {
+            background-image:url("images/Chroma1.jpg");
+            background-size: cover;
+        }
+
+	</style>
+
+	<script type="text/javascript">
+		var start = performance.now();
+        var background = 1;
+
+		function init() {
+			timer = document.getElementById("timer");
+			requestAnimationFrame(update);
+		}
+
+		function update() {
+			var diff = performance.now() - start;
+			timer.innerHTML = (Math.round((diff * 1000)/1000)) + " ms";
+			requestAnimationFrame(update);
+            
+            if (background % 5) {
+                document.body.style.backgroundImage = "url('images/Chroma2.jpg')";
+                background = 0;
+            } else {
+                document.body.style.backgroundImage = "url('images/Chroma1.jpg')";
+                background = 1;
+            }
+		}
+
+		window.onload = init;
+	</script>
+	<title>Latency benchmark</title>
+</head>
+
+<body>
+<span id="timer"></span><br />
+</body>
+</html>
+

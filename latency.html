@@ -1,0 +1,38 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+	<style type="text/css">
+		#timer
+		{
+			font-size: 300pt;
+            color: red;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+		var start = performance.now();
+
+		function init() {
+			timer = document.getElementById("timer");
+			requestAnimationFrame(update);
+		}
+
+		function update() {
+			var diff = performance.now() - start;
+			timer.innerHTML = (Math.round((diff * 1000)/1000)) + " ms";
+			requestAnimationFrame(update);
+		}
+
+		window.onload = init;
+	</script>
+	<title>Latency benchmark</title>
+</head>
+
+<body>
+<span id="timer"></span><br />
+</body>
+</html>
+
